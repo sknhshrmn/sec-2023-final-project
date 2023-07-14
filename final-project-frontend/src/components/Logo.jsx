@@ -12,11 +12,7 @@ const Logo = () => {
       title="Homepage"
     >
       <Link className="logo" styleto="/">
-        <img
-          alt="Logo"
-          src="/logo.png"
-          style={{ height: "70px", paddingRight: "10px" }}
-        />
+        <img alt="Logo" src="/logo.png" />
       </Link>
     </h1>
   );

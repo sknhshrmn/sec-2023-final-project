@@ -201,6 +201,11 @@
   color: white;
   cursor: pointer;
 }
+.container-logo img {
+  width: 100%;
+  padding-right: "10px";
+  max-height: 70px;
+}
 .container {
   min-height: 100vh;
   /* width: 100vw; */
@@ -427,7 +432,7 @@ input {
   .container-logo {
     padding: 1rem;
     align-self: start;
-    min-width: 70%;
+    width: 80%;
   }
   .container {
     padding-left: 2rem;
