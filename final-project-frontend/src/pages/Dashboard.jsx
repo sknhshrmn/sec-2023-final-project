@@ -74,7 +74,7 @@ const Dashboard = (req, res) => {
               >
                 Welcome back {user?.fullname}
               </h1>
-              <div classname="container-tabs">
+              <div className="container-tabs">
                 {/* Tabs */}
                 <React.Fragment>
                   {isAdmin ? (

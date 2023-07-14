@@ -19,7 +19,7 @@ const Header = () => {
     setJwt("");
     setUser(null);
     navigate("/");
-    location.reload();
+    // location.reload();
   };
 
   // Responsive navbar

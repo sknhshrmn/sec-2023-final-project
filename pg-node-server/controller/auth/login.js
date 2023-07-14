@@ -58,7 +58,7 @@ const login = async (req, res) => {
     /* Error handling */
     const serverRes = {
       message: "Invalid request",
-      data: "Username/email doesn't exist",
+      error: error.message,
     };
     res.status(403).json(serverRes);
   }
