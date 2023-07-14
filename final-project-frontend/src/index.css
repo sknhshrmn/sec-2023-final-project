@@ -67,13 +67,12 @@
 .button-hamburger-close {
   display: none;
   position: absolute;
-  right: 10px;
-  top: 7px;
+  right: 1.5rem;
+  top: 1.5rem;
   padding: 5px;
   color: #000;
   background: transparent;
   border-style: none;
-  margin: 1rem;
 }
 .hero {
   background-size: cover;
@@ -218,6 +217,12 @@
   padding-left: 5rem;
   padding-right: 5rem;
 }
+.container-greeting-intro {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  width: 80%;
+}
 .title {
   font-family: Montserrat;
   font-weight: bold;
@@ -294,6 +299,10 @@ input {
   float: right;
   font-size: 1rem;
 }
+/* Package card */
+.package-card img {
+  width: inherit;
+}
 /* Footer */
 .footer {
   height: 50px;
@@ -343,6 +352,8 @@ input {
 @media only screen and (max-width: 1350px) {
   .container-header {
     flex-direction: column;
+    padding-left: 0;
+    padding-right: 0;
   }
   .container-header ul {
     flex-direction: column;
@@ -350,6 +361,7 @@ input {
     background-color: #f3d52e;
     height: min-content;
     gap: 0;
+    z-index: 100;
   }
   .container-header li:nth-child(1) {
     border-top: 1px solid rgba(255, 255, 255, 0.555);
@@ -365,11 +377,15 @@ input {
   .container-header li button {
     margin: 0 auto;
   }
+  .header-menu {
+    padding: 0;
+  }
   .button-hamburger-close {
     display: block;
   }
   .container-logo {
     padding: 1rem;
+    align-self: start;
   }
 }
 
@@ -377,6 +393,8 @@ input {
 @media only screen and (max-width: 600px) {
   .container-header {
     flex-direction: column;
+    padding-right: 0;
+    padding-left: 0;
   }
   .container-header ul {
     flex-direction: column;
@@ -384,6 +402,7 @@ input {
     background-color: #f3d52e;
     height: min-content;
     gap: 0;
+    z-index: 100;
   }
   .container-header li:nth-child(1) {
     border-top: 1px solid rgba(255, 255, 255, 0.555);
@@ -399,11 +418,22 @@ input {
   .container-header li button {
     margin: 0 auto;
   }
+  .header-menu {
+    padding: 0;
+  }
   .button-hamburger-close {
     display: block;
   }
   .container-logo {
     padding: 1rem;
+    align-self: start;
+  }
+  .container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .container-greeting-intro {
+    width: 100%;
   }
   .container-package-card {
     flex-direction: column;

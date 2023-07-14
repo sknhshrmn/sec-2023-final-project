@@ -39,8 +39,12 @@ const Login = (req, res, next) => {
         handleSucesssNavigation();
       })
       .catch(function (error) {
-        console.log(error.response);
-        handleErrorNavigation(error.response.data?.message);
+        console.log(error);
+        if (error.response) {
+          handleErrorNavigation(error.response.data?.message);
+        } else {
+          handleErrorNavigation(error);
+        }
       })
       .finally(function () {
         setLoading(false);

@@ -55,14 +55,7 @@ const Home = () => {
               minHeight: "calc(100vh - 120px)",
             }}
           >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "start",
-                width: "80%",
-              }}
-            >
+            <div className="container-greeting-intro">
               {/* Greeting and introductions */}
               <div>
                 <p

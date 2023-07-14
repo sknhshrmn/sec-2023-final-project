@@ -56,7 +56,7 @@ const Dashboard = (req, res) => {
   }, [jwt]);
 
   return (
-    <div style={{ minHeight: "100vh" }}>
+    <div style={{ minHeight: "100vh", width: "100vw" }}>
       <div style={{ marginBottom: "5rem" }}>
         <Header />
         <div
