@@ -9,9 +9,11 @@ import { AiOutlineCloseSquare } from "react-icons/ai";
 const Header = () => {
   const [jwt, setJwt] = useSessionStorage("access_token", "");
   const [user, setUser] = useSessionStorage("userData", null);
-  const [isAdmin, setIsAdmin] = useState(user?.is_admin);
+  // const [isAdmin, setIsAdmin] = useState(user?.is_admin);
   const [toggleMenu, setToggleMenu] = useState(false);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+
+  // Handle navigation of logout button
   const navigate = useNavigate();
   const handleLogoutOut = () => {
     setJwt("");
@@ -19,6 +21,8 @@ const Header = () => {
     navigate("/");
     location.reload();
   };
+
+  // Responsive navbar
   const toggleNav = () => {
     setToggleMenu(!toggleMenu);
   };
@@ -44,6 +48,7 @@ const Header = () => {
         <Logo />
         {(toggleMenu || screenWidth > 1350) && (
           <ul>
+            {/* Dashboard button */}
             {jwt ? (
               <li>
                 <button
@@ -54,11 +59,13 @@ const Header = () => {
                 </button>
               </li>
             ) : null}
+            {/* Products button */}
             <li>
               <HashLink className="header-menu" smooth to="/#products">
                 Products
               </HashLink>
             </li>
+            {/* Contact Me button */}
             <li>
               <Link className="header-menu" to="https://wa.me/+601139308813">
                 Contact Me
@@ -72,6 +79,7 @@ const Header = () => {
                 />
               </Link>
             </li>
+            {/* Logout/Login button */}
             {jwt ? (
               <li>
                 <button
@@ -98,6 +106,7 @@ const Header = () => {
             </li>
           </ul>
         )}
+        {/* Hamburger/close button */}
         <button onClick={toggleNav} className="button-hamburger-close ">
           {toggleMenu || screenWidth > 1350 ? (
             <AiOutlineCloseSquare size={32} />

@@ -10,10 +10,11 @@ import GetQuote from "../components/GetQuote";
 
 const Home = () => {
   const [showButton, setShowButton] = useState(false);
+
+  // Handle button to scroll to top
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
-
   useEffect(() => {
     // Button is displayed after scrolling for 300 px
     const handleScrollButtonVisibility = () => {
@@ -27,6 +28,7 @@ const Home = () => {
       window.removeEventListener("scroll", handleScrollButtonVisibility);
     };
   });
+
   return (
     <div
       style={{
@@ -35,17 +37,8 @@ const Home = () => {
       }}
     >
       <Header />
-
-      {/* container */}
       {/* Section 1 */}
-      <div
-        className="hero"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          height: "calc(100% - 120px)",
-        }}
-      >
+      <div className="hero">
         <div className="overlay">
           <div
             className="container"
@@ -58,22 +51,10 @@ const Home = () => {
             <div className="container-greeting-intro">
               {/* Greeting and introductions */}
               <div>
+                <p className="text-greeting-heading">Takaful & Hibah </p>
                 <p
+                  className="text-greeting-heading"
                   style={{
-                    fontFamily: "Montserrat",
-                    fontSize: "1.5rem",
-                    fontWeight: "normal",
-                    color: "#f3d52e",
-                  }}
-                >
-                  Takaful & Hibah{" "}
-                </p>
-                <p
-                  style={{
-                    fontFamily: "Montserrat",
-                    fontSize: "1.5rem",
-                    fontWeight: "normal",
-                    color: "#f3d52e",
                     lineHeight: "0.5rem",
                   }}
                 >
@@ -85,45 +66,13 @@ const Home = () => {
                   color: "white",
                 }}
               >
-                <p
-                  style={{
-                    fontFamily: "Montserrat",
-                    fontSize: "7rem",
-                    fontWeight: "bold",
-                    lineHeight: "8rem",
-                    color: "#0997A0",
-                  }}
-                >
-                  FITRI
-                </p>
-                <p
-                  style={{
-                    fontFamily: "Montserrat",
-                    fontSize: "4.2rem",
-                    fontWeight: "bold",
-                    lineHeight: "2rem",
-                  }}
-                >
+                <p className="text-name-agent-line-1">FITRI</p>
+                <p className="text-name-agent-line-2" style={{}}>
                   YAHAYA
                 </p>
               </div>
-              <div
-                style={{
-                  backgroundColor: "#0997A0",
-                  height: "8px",
-                  width: "100px",
-                  marginBottom: "2rem",
-                  marginTop: "2rem",
-                }}
-              ></div>
-              <h3
-                style={{
-                  fontWeight: "normal",
-                  marginBottom: "2rem",
-                  fontSize: "1rem",
-                  color: "white",
-                }}
-              >
+              <div className="container-intro"></div>
+              <h3 className="text-intro">
                 We share, we care - Your insurance agent, committed to
                 protecting and supporting you.
               </h3>

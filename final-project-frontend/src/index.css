@@ -80,11 +80,46 @@
   background-image: url("/FYfamily.jpeg");
   height: 100%;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  height: calc(100% - 120px);
 }
 .overlay {
   width: 100%;
   content: "";
   background: rgba(0, 0, 0, 0.65);
+}
+.text-greeting-heading {
+  font-family: Montserrat;
+  font-size: 1.5rem;
+  font-weight: normal;
+  color: #f3d52e;
+}
+.text-name-agent-line-1 {
+  font-family: Montserrat;
+  font-size: 7rem;
+  font-weight: bold;
+  line-height: 8rem;
+  color: #0997a0;
+}
+.text-name-agent-line-2 {
+  font-family: Montserrat;
+  font-size: 4.2rem;
+  font-weight: bold;
+  line-height: 2rem;
+}
+.container-intro {
+  background-color: #0997a0;
+  height: 8px;
+  width: 100px;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+.text-intro {
+  font-weight: normal;
+  margin-bottom: 2rem;
+  font-size: 1rem;
+  color: white;
 }
 .button-white {
   all: unset;
@@ -203,7 +238,7 @@
 }
 .container-logo img {
   width: 100%;
-  padding-right: "10px";
+  padding-right: 10px;
   max-height: 70px;
 }
 .container {
@@ -238,24 +273,7 @@
   font-weight: bold;
   font-size: 2.5rem;
 }
-.container-package-card {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-}
-.package-card {
-  width: 33.33%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-width: 1px;
-  background-color: #0997a0;
-  border-radius: 10px;
-  color: white;
-  padding: 0.5rem;
-}
+
 .container-form {
   display: flex;
   flex-direction: row;
@@ -277,7 +295,6 @@
   gap: 1rem;
   padding: 2rem;
 }
-
 input {
   all: unset;
   background-color: white;
@@ -290,7 +307,45 @@ input {
   padding-left: 0.5rem;
   padding-right: 0.5rem;
 }
+/* Login */
+.sub-title {
+  margin-top: 1rem;
+  display: block;
+  width: 100%;
+  text-align: center;
+}
 /* Edit my account */
+#edit-my-account {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.container-edit-my-acc {
+  min-height: calc(100vh - 120px - 50px);
+  max-width: 1440px;
+  width: 100%;
+  padding: 5rem;
+  margin: 0 auto;
+}
+.wrapper-form {
+  width: 100%;
+  max-width: 1440px;
+  border-width: 1px;
+  border-color: #b5b0b0;
+  border-style: solid;
+  border-radius: 0.5rem;
+  margin-top: 3rem;
+  padding: 1rem;
+}
+.wrapper-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
 #edit-my-account .group-button {
   display: flex;
   gap: 2rem;
@@ -306,7 +361,87 @@ input {
 }
 /* Package card */
 .package-card img {
-  width: inherit;
+  width: 100%;
+}
+.container-package-card {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+.package-card {
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-width: 1px;
+  background-color: #0997a0;
+  border-radius: 10px;
+  color: white;
+  padding: 0.5rem;
+}
+/* Get Quote */
+.quotation-form-wrapper-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+/* Dashboard */
+.container-dashboard {
+  min-height: calc(100vh - 120px - 50px);
+  max-width: 1440px;
+  width: 100%;
+  padding: 5rem;
+  margin: 0 auto;
+}
+.wrapper-dashboard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.container-tabs {
+  width: 100%;
+  margin: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+  background-color: white;
+}
+/* My Account */
+.container-my-acc {
+  min-width: 70%;
+  width: 100%;
+  border-width: 1px;
+  border-color: #b5b0b0;
+  border-style: solid;
+  border-radius: 0.5rem;
+  margin-top: 3rem;
+  padding: 1rem;
+  align-self: center;
+}
+.wrapper-my-acc {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.my-acc-wrapper-field {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+.edit-info-button {
+  margin-top: 3rem;
+  padding-right: 3rem;
+  padding-left: 3rem;
+  font-size: 1rem;
+  width: fit-content;
+  align-self: center;
 }
 /* Footer */
 .footer {
@@ -455,6 +590,7 @@ input {
   .container-form {
     flex-direction: column;
   }
+  /* Get Quote */
   .form-left {
     width: 100%;
     padding-bottom: 1rem;

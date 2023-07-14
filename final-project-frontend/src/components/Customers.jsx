@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { HOST } from "../api";
 import useSessionStorage from "../hook/useSessionStorage";
 import MaterialTable from "material-table";
-import { ThemeProvider, Typography, createTheme } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material";
 import { forwardRef } from "react";
 import axios from "axios";
 import { FaSmoking } from "react-icons/fa";
 import { GrUser, GrUserFemale } from "react-icons/gr";
 
+// Neccessary for material-table
 import AddBox from "@material-ui/icons/AddBox";
 import ArrowDownward from "@material-ui/icons/ArrowDownward";
 import Check from "@material-ui/icons/Check";
@@ -24,6 +25,7 @@ import SaveAlt from "@material-ui/icons/SaveAlt";
 import Search from "@material-ui/icons/Search";
 import ViewColumn from "@material-ui/icons/ViewColumn";
 
+// Neccessary for material-table
 const tableIcons = {
   Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
   Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -52,9 +54,11 @@ const Customers = (req, res) => {
   const defaultMaterialTheme = createTheme();
   const [jwt, setJwt] = useSessionStorage("access_token", "");
   const [data, setData] = useState([]); //table data
+
   //for error handling
   const [iserror, setIserror] = useState(false);
   const [errorMessages, setErrorMessages] = useState([]);
+
   // Define columns
   const columns = [
     {
@@ -240,10 +244,12 @@ const Customers = (req, res) => {
     fetchAllusers();
   }, [jwt]);
 
+  // Validate email
   const validateEmail = () => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
   };
 
+  // Handle Add button for each row
   const handleRowAdd = async (newData, resolve) => {
     //validation
     let errorList = [];
@@ -297,6 +303,7 @@ const Customers = (req, res) => {
     }
   };
 
+  // Handle Update button for each row
   const handleRowUpdate = async (newData, oldData, resolve) => {
     //validation
     let errorList = [];
@@ -350,6 +357,7 @@ const Customers = (req, res) => {
     }
   };
 
+  // Handle Delete button for each row
   const handleRowDelete = async (oldData, resolve) => {
     const instance = await axios
       .delete(`${HOST}/api/customers/${oldData.id}/delete`, {

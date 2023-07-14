@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { HOST } from "../api";
 import useSessionStorage from "../hook/useSessionStorage";
@@ -9,7 +9,9 @@ const GetQuote = () => {
   const alert = useAlert();
   const [isLoading, setLoading] = useState(false);
   const [jwt, setJwt] = useSessionStorage("access_token", "");
+  const [smoking, setSmoking] = useState(false);
 
+  // Default value of forms
   const [formValues, setFormValues] = useState({
     fullname: "",
     gender: "Male",
@@ -23,7 +25,7 @@ const GetQuote = () => {
     message: "",
   });
 
-  const [smoking, setSmoking] = useState(false);
+  // Handle navigation of success form submission
   const navigate = useNavigate();
   const handleSucesssNavigation = () => {
     alert.show("Request submitted!");
@@ -41,19 +43,25 @@ const GetQuote = () => {
     });
     navigate("/");
   };
+
+  // Handle navigation of error during form submission
   const handleErrorNavigation = () => {
     alert.show("Error");
     navigate("/#quotation");
   };
+
+  // Handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
     // console.log(event);
     const fullname = event.target[0].value;
     const gender = event.target[1].value;
     const birthday = event.target[2].value;
+
     if (event.target[3].value === "True") {
       setSmoking(true);
     }
+
     const critical_illness = event.target[4].value;
     const insurance_type = event.target[5].value;
     const insurance_budget = event.target[6].value;
@@ -123,6 +131,7 @@ const GetQuote = () => {
           <form method="POST" onSubmit={handleSubmit}>
             <div className="container-form">
               <div className="form-left">
+                {/* Fullname */}
                 <input
                   id="fullname"
                   type="text"
@@ -133,14 +142,8 @@ const GetQuote = () => {
                   }
                   required
                 />
-                <div
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                  }}
-                >
+                {/* Gender */}
+                <div className="quotation-form-wrapper-field">
                   <label htmlFor="gender">Gender *</label>
                   <select
                     id="gender"
@@ -155,6 +158,7 @@ const GetQuote = () => {
                     <option value="Female">Female</option>
                   </select>
                 </div>
+                {/* Birthday */}
                 <input
                   id="birthday"
                   type="date"
@@ -165,14 +169,8 @@ const GetQuote = () => {
                   }
                   required
                 />
-                <div
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                  }}
-                >
+                {/* Smoking */}
+                <div className="quotation-form-wrapper-field">
                   <label htmlFor="str_smoking">Smoking? *</label>
                   <select
                     id="str_smoking"
@@ -190,14 +188,8 @@ const GetQuote = () => {
                     <option value="False">No</option>
                   </select>
                 </div>
-                <div
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                  }}
-                >
+                {/* Critical illness */}
+                <div className="quotation-form-wrapper-field">
                   <label htmlFor="critical_illness">
                     Critical illness (if any):
                   </label>
@@ -214,14 +206,8 @@ const GetQuote = () => {
                     }
                   />
                 </div>
-                <div
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                  }}
-                >
+                {/* Insurance Type */}
+                <div className="quotation-form-wrapper-field">
                   <label htmlFor="insurance_type">Insurance Type *:</label>
                   <select
                     id="insurance_type"
@@ -239,14 +225,8 @@ const GetQuote = () => {
                     <option value="Hibah">Hibah</option>
                   </select>
                 </div>
-                <div
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                  }}
-                >
+                {/* Insurance budget */}
+                <div className="quotation-form-wrapper-field">
                   <label htmlFor="insurance_budget">Insurance Budget *:</label>
                   <select
                     id="insurance_budget"
@@ -272,6 +252,7 @@ const GetQuote = () => {
                 </div>
               </div>
               <div className="form-right">
+                {/* Email */}
                 <input
                   id="email"
                   type="email"
@@ -285,6 +266,7 @@ const GetQuote = () => {
                   }
                   required
                 />
+                {/* Mobile No. */}
                 <input
                   id="mobile_no"
                   type="text"
@@ -298,14 +280,8 @@ const GetQuote = () => {
                   }
                   required
                 />
-                <div
-                  style={{
-                    width: "100%",
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                  }}
-                >
+                {/* Message */}
+                <div className="quotation-form-wrapper-field">
                   <label htmlFor="message">Message (optional):</label>
                   <textarea
                     id="message"

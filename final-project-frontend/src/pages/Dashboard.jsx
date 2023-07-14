@@ -1,6 +1,6 @@
 import { Box, Tab, Tabs, Typography } from "@mui/material";
 import React, { useState, useEffect } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import useSessionStorage from "../hook/useSessionStorage";
 import Header from "../components/Header";
 import Users from "../components/Users";
@@ -16,14 +16,19 @@ const Dashboard = (req, res) => {
   const [currentTabIndex, setCurrentTabIndex] = useState(0);
   const navigate = useNavigate();
   const [isAdmin, setIsAdmin] = useState(false);
+
+  // Handle tab change
   const handleTabChange = (e, tabIndex) => {
     console.log(tabIndex);
     setCurrentTabIndex(tabIndex);
   };
+
+  // Handle navigation of login button
   const handleNavigateToLogin = () => {
     navigate("/login");
   };
 
+  // Fetch user account
   const fetchUserAccount = async () => {
     // get jwt from localStorage
     // run get api
@@ -39,7 +44,6 @@ const Dashboard = (req, res) => {
         console.info(response.data);
         setUser(response.data.userData);
         setIsAdmin(response.data.userData.is_admin);
-        // setAdmin(response.data.user.isadmin);
       })
       .catch(function (error) {
         // handle error
@@ -60,23 +64,8 @@ const Dashboard = (req, res) => {
       <div style={{ marginBottom: "5rem" }}>
         <Header />
         <div style={{ overflow: "auto" }}>
-          <div
-            style={{
-              minHeight: "calc(100vh - 120px - 50px)",
-              maxWidth: "1440px",
-              width: "100%",
-              padding: "5rem",
-              margin: "0 auto",
-            }}
-          >
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                width: "100%",
-                alignItems: "center",
-              }}
-            >
+          <div className="container-dashboard">
+            <div className="wrapper-dashboard">
               <h1
                 className="greeting"
                 style={{
@@ -85,18 +74,8 @@ const Dashboard = (req, res) => {
               >
                 Welcome back {user?.fullname}
               </h1>
-              <div
-                style={{
-                  width: "100%",
-                  margin: "3rem",
-                  display: "flex",
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  gap: "1rem",
-                  alignItems: "start",
-                  backgroundColor: "white",
-                }}
-              >
+              <div classname="container-tabs">
+                {/* Tabs */}
                 <React.Fragment>
                   {isAdmin ? (
                     <Tabs
@@ -121,8 +100,7 @@ const Dashboard = (req, res) => {
                       value={currentTabIndex}
                       onChange={handleTabChange}
                       style={{
-                        width: "20%",
-                        marginTop: "5rem",
+                        width: "100%",
                       }}
                     >
                       <Tab label="My Account" style={{ alignSelf: "start" }} />
@@ -137,7 +115,10 @@ const Dashboard = (req, res) => {
                   {/* TAB 1 Contents */}
                   {currentTabIndex === 0 && (
                     <Box style={{ width: "100%", padding: "1.5 rem 0.5rem" }}>
-                      <Typography variant="h5" style={{ textAlign: "center" }}>
+                      <Typography
+                        variant="h5"
+                        style={{ textAlign: "center", marginTop: "2rem" }}
+                      >
                         My Account Information
                       </Typography>
                       <MyAccount />
@@ -146,7 +127,10 @@ const Dashboard = (req, res) => {
                   {/* TAB 3 Contents */}
                   {currentTabIndex === 1 && (
                     <Box style={{ width: "100%" }}>
-                      <Typography variant="h5" style={{ textAlign: "center" }}>
+                      <Typography
+                        variant="h5"
+                        style={{ textAlign: "center", marginTop: "2rem" }}
+                      >
                         List of Customers
                       </Typography>
                       <Customers />
@@ -155,7 +139,10 @@ const Dashboard = (req, res) => {
                   {/* TAB 3 Contents */}
                   {currentTabIndex === 2 && (
                     <Box style={{ width: "100%" }}>
-                      <Typography variant="h5" style={{ textAlign: "center" }}>
+                      <Typography
+                        variant="h5"
+                        style={{ textAlign: "center", marginTop: "2rem" }}
+                      >
                         List of Users
                       </Typography>
                       <Users />

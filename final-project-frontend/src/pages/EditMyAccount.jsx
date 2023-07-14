@@ -11,6 +11,8 @@ const EditMyAccount = (req, res) => {
   const [jwt, setJwt] = useSessionStorage("access_token", "");
   const [user, setUser] = useSessionStorage("userData", null);
   const [isLoading, setLoading] = useState(false);
+
+  // Handle navigation of submit button and cancel button
   const navigate = useNavigate();
   const handleSucesssNavigation = () => {
     alert.show("Account updated successfully!");
@@ -19,6 +21,8 @@ const EditMyAccount = (req, res) => {
   const handleCancelNavigation = () => {
     navigate("/dashboard");
   };
+
+  // Handle submit button
   const handleSubmit = (event) => {
     event.preventDefault();
     const username = event.target[0].value;
@@ -60,45 +64,14 @@ const EditMyAccount = (req, res) => {
     <div style={{ minHeight: "100vh" }}>
       <div style={{ marginBottom: "5rem" }}>
         <Header />
-        <div
-          style={{
-            minHeight: "calc(100vh - 120px - 50px)",
-            maxWidth: "1440px",
-            width: "100%",
-            padding: "5rem",
-            margin: "0 auto",
-          }}
-        >
-          <div
-            id="edit-my-account"
-            style={{
-              display: "flex",
-              flexDirection: "column",
-              width: "100%",
-              alignItems: "center",
-              maxWidth: "600px",
-              margin: "0 auto",
-            }}
-          >
+        <div className="container-edit-my-acc">
+          <div id="edit-my-account">
             <h1 className="greeting">Edit My Account</h1>
-            <div
-              style={{
-                width: "100%",
-                maxWidth: "1440px",
-                borderWidth: "1px",
-                borderColor: "#b5b0b0",
-                borderStyle: "solid",
-                borderRadius: "0.5rem",
-                marginTop: "3rem",
-                padding: "1rem",
-              }}
-            >
+            <div className="wrapper-form">
               <form style={{ width: "100%" }} onSubmit={handleSubmit}>
                 <div
+                  className="wrapper-field"
                   style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
                     marginTop: "3rem",
                   }}
                 >
@@ -111,14 +84,7 @@ const EditMyAccount = (req, res) => {
                     placeholder={user?.username}
                   />
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                    marginTop: "1rem",
-                  }}
-                >
+                <div className="wrapper-field">
                   <label htmlFor="email">Email</label>
                   <input
                     id="email"
@@ -128,14 +94,7 @@ const EditMyAccount = (req, res) => {
                     required
                   />
                 </div>
-                <div
-                  style={{
-                    display: "flex",
-                    flexDirection: "column",
-                    gap: "0.5rem",
-                    marginTop: "1rem",
-                  }}
-                >
+                <div className="wrapper-field">
                   <label htmlFor="fullname">Fullname</label>
                   <input
                     id="fullname"
@@ -145,8 +104,7 @@ const EditMyAccount = (req, res) => {
                     required
                   />
                 </div>
-                <div className="group-button"
-                >
+                <div className="group-button">
                   <button
                     name="cancel"
                     value="cancel"

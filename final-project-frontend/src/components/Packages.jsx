@@ -17,6 +17,7 @@ const Packages = () => {
         </div>
         <div className="container-package-card">
           {/* package card */}
+          {/* Takaful Harmoni */}
           <div className="package-card">
             <p style={{ fontWeight: "bold", padding: "1rem" }}>
               Takaful Harmoni
@@ -47,28 +48,23 @@ const Packages = () => {
               </div>
             </div>
           </div>
+          {/* Takaful Prisma */}
           <div
             className="package-card"
             style={{ backgroundColor: "#f3d52e", color: "black" }}
           >
             <p style={{ fontWeight: "bold", padding: "1rem" }}>
-              Takaful Harmoni
+              Takaful Prisma
             </p>
             <img src="Prisma.png" alt="package 1 photo" />
             <div style={{ padding: "1rem" }}>
               <div>
-                Harmoni gives you the flexibility and peace of mind to manage
-                your finances, without comprising your takaful coverage.
+                With Prisma Takaful, you can further provide worry-free coverage
+                for your family’s future security alongside your existing
+                savings. All it requires is an affordable contribution of RM50
+                per month to ensure your family is taken care of.
               </div>
-              <div style={{ padding: "1rem" }}>
-                <p>Key benefits:</p>
-                <ul>
-                  <li>Partial Withdrawal Features</li>
-                  <li>Takaful Coverage</li>
-                  <li>Maturity Benefit</li>
-                  <li>Enhance Your Coverage</li>
-                </ul>
-              </div>
+
               <div style={{ padding: "1rem" }}>
                 <p>Eligibility:</p>
                 <ul>
@@ -80,23 +76,25 @@ const Packages = () => {
               </div>
             </div>
           </div>
+          {/* Hibah*/}
           <div className="package-card">
             <p style={{ fontWeight: "bold", padding: "1rem" }}>
-              Takaful Harmoni
+              Mahabbah Takafulink
             </p>
             <img src="Hibah.png" alt="package 1 photo" />
             <div style={{ padding: "1rem" }}>
               <div>
-                Harmoni gives you the flexibility and peace of mind to manage
-                your finances, without comprising your takaful coverage.
+                Etiqa’s Mahabbah Takafulink investment-linked takaful plan helps
+                you ensure the dreams for your loved ones will continue even
+                when you are no longer around with our Fast & Easy offerings.
               </div>
               <div style={{ padding: "1rem" }}>
                 <p>Key benefits:</p>
                 <ul>
-                  <li>Partial Withdrawal Features</li>
-                  <li>Takaful Coverage</li>
-                  <li>Maturity Benefit</li>
-                  <li>Enhance Your Coverage</li>
+                  <li>Hibah</li>
+                  <li>Disability Care Payout</li>
+                  <li>No Medical Examination</li>
+                  <li>Flexibility</li>
                 </ul>
               </div>
               <div style={{ padding: "1rem" }}>
