@@ -427,6 +427,7 @@ input {
   .container-logo {
     padding: 1rem;
     align-self: start;
+    min-width: 70%;
   }
   .container {
     padding-left: 2rem;
