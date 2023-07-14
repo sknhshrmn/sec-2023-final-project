@@ -1,0 +1,118 @@
+import express from "express";
+// import dbConfig from "./config/dbConfig.js";
+import cors from "cors";
+import jsonwebtoken from "jsonwebtoken";
+import passport from "passport";
+import flash from "express-flash";
+import initializePassport from "./config/passportConfig.js";
+import session from "express-session";
+
+// import view from "./controller/user/view.js";
+// import downloadUserInfo from "./controller/user/downloadUserInfo.js";
+// import listAll from "./controller/user/listAll.js";
+import { body, check } from "express-validator";
+import validatorResponse from "./middleware/validatorResponse.js";
+import isAuthenticated from "./middleware/isAuthenticated.js";
+// import logout from "./controller/auth/logout.js";
+// import isAdmin from "./middleware/isAdmin.js";
+import checkStatus from "./controller/health/checkStatus.js";
+import register from "./controller/auth/register.js";
+const app = express();
+
+// Middleware
+
+// Parses details from a form
+app.use(express.json());
+app.use(cors());
+app.use(express.urlencoded({ extended: false }));
+
+app.use(
+  session({
+    // Key we want to keep secret which will encrypt all of our information
+    secret: "secret",
+    // Should we resave our session variables if nothing has changes which we dont
+    resave: false,
+    // Save empty value if there is no vaue which we do not want to do
+    saveUninitialized: false,
+  })
+);
+
+// Funtion inside passport which initializes passport
+app.use(passport.initialize());
+// Store our variables to be persisted across the whole session. Works with app.use(Session) above
+app.use(passport.session());
+app.use(flash());
+
+// Route
+// public routes
+app.get("/", checkStatus);
+app.get("/public", (req, res) =>
+  res.status(200).json({ message: "Public route" })
+);
+
+app.get("/api/register", (req, res) => {
+  //   res.json({
+  //     user: req.user,
+  //   });
+  console.log("register");
+});
+app.post(
+  "/api/register",
+  //   check("email").notEmpty().bail().isEmail().bail(),
+  //   check("username").notEmpty().bail().isLength({ min: 4 }).bail(),
+  //   check("password").notEmpty().bail().isLength({ min: 8 }).bail(),
+  //   validatorResponse,
+  passport.authenticate("local-register", {
+    successRedirect: "/",
+    // failureRedirect: "/api/register",
+    failureFlash: true,
+  })
+);
+
+app.get("/api/login", isAuthenticated, (req, res) => {
+  // flash sets a messages variable. passport sets the error message
+  //   console.log(req.flash("error"));
+  //   console.log(req.user);
+  console.log("login");
+});
+
+app.post(
+  "/api/login",
+  passport.authenticate("local-login"),
+  function (req, res, next) {
+    // This is verifying that the user part has been populated,
+    // which means that the user has been authenticated.
+    if (req?.user) {
+      res.send("Returning with some text");
+    } else {
+      // If the user property does no exist, redirect to /login
+      res.redirect("/api/login");
+    }
+  }
+);
+
+// app.post(
+//   "/api/login",
+//   check("identifier").notEmpty().bail(),
+//   check("password").notEmpty().bail().isLength({ min: 4 }).bail(),
+//   validatorResponse,
+//   login
+// );
+// app.put("/api/logout", logout);
+
+// // private routes
+// app.get("/private", isAuthenticated, (req, res) =>
+//   res.status(200).json({ message: "Private route", user: req.user })
+// );
+// app.get("/admin", isAuthenticated, isAdmin, (req, res) =>
+//   res.status(200).json({ message: "Admin route", user: req.user })
+// );
+// app.get("/api/users", isAuthenticated, listAll);
+// app.get("/api/users/:username", isAuthenticated, view);
+// app.get("/api/users/download/:id", isAuthenticated, downloadUserInfo);
+// app.get("/api/logout", isAuthenticated, logout);
+
+app.listen(8080, () => {
+  console.log("Server run on port 8080");
+});
+export default app;
