@@ -1,18 +1,13 @@
 import pkg from "pg";
 const { Pool } = pkg;
-// import "dotenv/config";
+import "dotenv/config";
 
 const dbConfig = new Pool({
-  //   host: process.env.DB_HOST || "localhost",
-  //   user: process.env.DB_USER || "postgres",
-  //   password: process.env.DB_PASSWORD || "postgres",
-  //   database: process.env.DB_DATABASE || "Fitri Yahaya Planner Website",
+  host: process.env.DB_HOST || "localhost",
+  user: process.env.DB_USER || "postgres",
+  password: process.env.DB_PASSWORD || "postgres",
+  database: process.env.DB_DATABASE || "Fitri Yahaya Planner Website",
   ssl: process.env.DB_SSL || false,
-  host: "localhost",
-  user: "postgres",
-  password: "postgres",
-  database: "Fitri Yahaya Planner Website",
-  ssl: false,
   max: 20,
   idleTimeoutMillis: 30000,
   connectionTimeoutMillis: 20000,
