@@ -260,9 +260,14 @@ const GetQuote = () => {
                     }
                     required
                   >
-                    <option value="RM100-RM200">RM100-RM200</option>
-                    <option value="RM200-RM300">RM200-RM300</option>
-                    <option value="RM300-RM400">RM300-RM400</option>
+                    <option value="RM150">RM150*</option>
+                    <option value="RM200">RM200*</option>
+                    <option value="RM250">RM250*</option>
+                    <option value="RM300">RM300*</option>
+                    <option value="RM350">RM350*</option>
+                    <option value="RM400">RM400*</option>
+                    <option value="RM450">RM450*</option>
+                    <option value="RM500">RM500*</option>
                   </select>
                 </div>
               </div>
