@@ -47,9 +47,9 @@ const Login = (req, res, next) => {
       })
       .catch(function (error) {
         console.log(error);
-        if (error.response) {
+        try {
           handleErrorNavigation(error.response.data?.message);
-        } else {
+        } catch (err) {
           handleErrorNavigation(error);
         }
       })
