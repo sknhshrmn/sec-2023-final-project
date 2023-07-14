@@ -59,110 +59,115 @@ const Dashboard = (req, res) => {
     <div style={{ minHeight: "100vh", width: "100vw" }}>
       <div style={{ marginBottom: "5rem" }}>
         <Header />
-        <div
-          style={{
-            minHeight: "calc(100vh - 120px - 50px)",
-            maxWidth: "1440px",
-            width: "100%",
-            padding: "5rem",
-            margin: "0 auto",
-          }}
-        >
+        <div style={{ overflow: "auto" }}>
           <div
             style={{
-              display: "flex",
-              flexDirection: "column",
+              minHeight: "calc(100vh - 120px - 50px)",
+              maxWidth: "1440px",
               width: "100%",
-              alignItems: "center",
+              padding: "5rem",
+              margin: "0 auto",
             }}
           >
-            <h1
-              className="greeting"
-              style={{
-                alignSelf: "start",
-              }}
-            >
-              Welcome back {user?.fullname}
-            </h1>
             <div
               style={{
-                width: "100%",
-                margin: "3rem",
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "space-between",
-                gap: "1rem",
-                alignItems: "start",
-                backgroundColor: "white",
+                width: "100%",
+                alignItems: "center",
               }}
             >
-              <React.Fragment>
-                {isAdmin ? (
-                  <Tabs
-                    value={currentTabIndex}
-                    onChange={handleTabChange}
-                    style={{
-                      width: "100%",
-                    }}
-                  >
-                    <Tab label="My Account" style={{ alignSelf: "start" }} />
-                    <Tab
-                      label="List of Customers"
-                      style={{ alignSelf: "start" }}
-                    />
-                    <Tab label="List of Users" style={{ alignSelf: "start" }} />
-                  </Tabs>
-                ) : (
-                  <Tabs
-                    value={currentTabIndex}
-                    onChange={handleTabChange}
-                    style={{
-                      width: "20%",
-                      marginTop: "5rem",
-                    }}
-                  >
-                    <Tab label="My Account" style={{ alignSelf: "start" }} />
-                    <Tab label="Customers" style={{ alignSelf: "start" }} />
-                    <Tab
-                      label="Users"
-                      style={{ alignSelf: "start" }}
-                      disabled
-                    />
-                  </Tabs>
-                )}
-                {/* TAB 1 Contents */}
-                {currentTabIndex === 0 && (
-                  <Box style={{ width: "100%", padding: "1.5 rem 0.5rem" }}>
-                    <Typography variant="h5" style={{ textAlign: "center" }}>
-                      My Account Information
-                    </Typography>
-                    <MyAccount />
-                  </Box>
-                )}
-                {/* TAB 3 Contents */}
-                {currentTabIndex === 1 && (
-                  <Box style={{ width: "100%" }}>
-                    <Typography variant="h5" style={{ textAlign: "center" }}>
-                      List of Customers
-                    </Typography>
-                    <Customers />
-                  </Box>
-                )}
-                {/* TAB 3 Contents */}
-                {currentTabIndex === 2 && (
-                  <Box style={{ width: "100%" }}>
-                    <Typography variant="h5" style={{ textAlign: "center" }}>
-                      List of Users
-                    </Typography>
-                    <Users />
-                  </Box>
-                )}
-              </React.Fragment>
+              <h1
+                className="greeting"
+                style={{
+                  alignSelf: "start",
+                }}
+              >
+                Welcome back {user?.fullname}
+              </h1>
+              <div
+                style={{
+                  width: "100%",
+                  margin: "3rem",
+                  display: "flex",
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  gap: "1rem",
+                  alignItems: "start",
+                  backgroundColor: "white",
+                }}
+              >
+                <React.Fragment>
+                  {isAdmin ? (
+                    <Tabs
+                      value={currentTabIndex}
+                      onChange={handleTabChange}
+                      style={{
+                        width: "100%",
+                      }}
+                    >
+                      <Tab label="My Account" style={{ alignSelf: "start" }} />
+                      <Tab
+                        label="List of Customers"
+                        style={{ alignSelf: "start" }}
+                      />
+                      <Tab
+                        label="List of Users"
+                        style={{ alignSelf: "start" }}
+                      />
+                    </Tabs>
+                  ) : (
+                    <Tabs
+                      value={currentTabIndex}
+                      onChange={handleTabChange}
+                      style={{
+                        width: "20%",
+                        marginTop: "5rem",
+                      }}
+                    >
+                      <Tab label="My Account" style={{ alignSelf: "start" }} />
+                      <Tab label="Customers" style={{ alignSelf: "start" }} />
+                      <Tab
+                        label="Users"
+                        style={{ alignSelf: "start" }}
+                        disabled
+                      />
+                    </Tabs>
+                  )}
+                  {/* TAB 1 Contents */}
+                  {currentTabIndex === 0 && (
+                    <Box style={{ width: "100%", padding: "1.5 rem 0.5rem" }}>
+                      <Typography variant="h5" style={{ textAlign: "center" }}>
+                        My Account Information
+                      </Typography>
+                      <MyAccount />
+                    </Box>
+                  )}
+                  {/* TAB 3 Contents */}
+                  {currentTabIndex === 1 && (
+                    <Box style={{ width: "100%" }}>
+                      <Typography variant="h5" style={{ textAlign: "center" }}>
+                        List of Customers
+                      </Typography>
+                      <Customers />
+                    </Box>
+                  )}
+                  {/* TAB 3 Contents */}
+                  {currentTabIndex === 2 && (
+                    <Box style={{ width: "100%" }}>
+                      <Typography variant="h5" style={{ textAlign: "center" }}>
+                        List of Users
+                      </Typography>
+                      <Users />
+                    </Box>
+                  )}
+                </React.Fragment>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
