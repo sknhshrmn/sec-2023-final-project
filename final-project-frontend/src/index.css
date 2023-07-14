@@ -368,19 +368,22 @@ input {
     gap: 0;
     z-index: 100;
   }
-  .container-header li:nth-child(1) {
+  .container-header ul li:nth-child(1) {
     border-top: 1px solid rgba(255, 255, 255, 0.555);
     text-align: center;
   }
-  .container-header li {
+  .container-header ul li {
     width: 100%;
     border-top: 1px solid rgba(255, 255, 255, 0.555);
     text-align: center;
     padding: 0.5rem;
+    font-size: 1rem;
+    text-transform: none;
   }
   .container-header li a,
   .container-header li button {
-    margin: 0 auto;
+    font-size: 1rem;
+    margin-left: 1rem;
   }
   .header-menu {
     padding: 0;
@@ -409,19 +412,21 @@ input {
     gap: 0;
     z-index: 100;
   }
-  .container-header li:nth-child(1) {
+  .container-header ul li:nth-child(1) {
     border-top: 1px solid rgba(255, 255, 255, 0.555);
     text-align: center;
   }
-  .container-header li {
+  .container-header ul li {
     width: 100%;
     border-top: 1px solid rgba(255, 255, 255, 0.555);
     text-align: center;
     padding: 0.5rem;
+    text-transform: none;
   }
   .container-header li a,
   .container-header li button {
-    margin: 0 auto;
+    font-size: 1rem;
+    margin-left: 1rem;
   }
   .header-menu {
     padding: 0;
