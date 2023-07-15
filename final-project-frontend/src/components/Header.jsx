@@ -87,15 +87,14 @@ const Header = () => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
-                    flexDirection: "column",
                   }}
                   className="button-white"
                   onClick={() => handleLogoutOut()}
                 >
-                  <p>Logout</p>
+                  <p>Logout </p>
                   {user && (
                     <p style={{ textTransform: "lowercase" }}>
-                      as {user.username}
+                      ({user.username})
                     </p>
                   )}
                 </button>
