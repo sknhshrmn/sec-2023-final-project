@@ -136,7 +136,6 @@ const Users = (req, res) => {
     // if (newData.password === undefined) {
     //   errorList.push("Please enter password");
     // }
-    newData.password = "abcd1234"; /* Set the default password */
     if (newData.fullname === undefined) {
       errorList.push("Please enter fullname");
     }
@@ -145,6 +144,8 @@ const Users = (req, res) => {
     }
     if (errorList.length < 1) {
       //no error
+
+      newData.password = "abcd1234"; /* Set the default password */
       const instance = await axios
         .post(
           `${HOST}/api/register`,
@@ -176,6 +177,9 @@ const Users = (req, res) => {
           setIserror(true);
           resolve();
           alert.show(error);
+        })
+        .finally(function () {
+          console.log("Add done");
         });
     } else {
       setErrorMessages(errorList);
