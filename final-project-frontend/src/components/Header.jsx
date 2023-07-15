@@ -89,7 +89,7 @@ const Header = () => {
                   <p style={{ display: "block" }}>Logout</p>
                   {user && (
                     <p style={{ display: "block", textTransform: "lowercase" }}>
-                      as {user}
+                      as {user.username}
                     </p>
                   )}
                 </button>
