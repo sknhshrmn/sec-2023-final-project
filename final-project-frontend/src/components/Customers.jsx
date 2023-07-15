@@ -383,38 +383,6 @@ const Customers = (req, res) => {
       });
   };
 
-  // Table for Admin control
-  const AdminControl = () => {
-    return (
-      <MaterialTable
-        title="Customers"
-        columns={columns}
-        data={data}
-        icons={tableIcons}
-        options={{
-          pageSize: 5,
-          pageSizeOptions: [5, 10, 25, 50, 100],
-          sorting: true,
-        }}
-        editable={{
-          onRowUpdate: (newData, oldData) =>
-            new Promise((resolve) => {
-              handleRowUpdate(newData, oldData, resolve);
-            }),
-
-          onRowAdd: (newData) =>
-            new Promise((resolve) => {
-              handleRowAdd(newData, resolve);
-            }),
-          onRowDelete: (oldData) =>
-            new Promise((resolve) => {
-              handleRowDelete(oldData, resolve);
-            }),
-        }}
-      />
-    );
-  };
-
   return (
     <div
       style={{
@@ -425,7 +393,32 @@ const Customers = (req, res) => {
       <div style={{ height: 400, width: "100%" }}>
         <ThemeProvider theme={defaultMaterialTheme}>
           {isAdmin ? (
-            <AdminControl />
+            <MaterialTable
+              title="Customers"
+              columns={columns}
+              data={data}
+              icons={tableIcons}
+              options={{
+                pageSize: 5,
+                pageSizeOptions: [5, 10, 25, 50, 100],
+                sorting: true,
+              }}
+              editable={{
+                onRowUpdate: (newData, oldData) =>
+                  new Promise((resolve) => {
+                    handleRowUpdate(newData, oldData, resolve);
+                  }),
+
+                onRowAdd: (newData) =>
+                  new Promise((resolve) => {
+                    handleRowAdd(newData, resolve);
+                  }),
+                onRowDelete: (oldData) =>
+                  new Promise((resolve) => {
+                    handleRowDelete(oldData, resolve);
+                  }),
+              }}
+            />
           ) : (
             <MaterialTable
               title="Customers"
