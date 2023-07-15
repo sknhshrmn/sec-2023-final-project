@@ -86,7 +86,12 @@ const Header = () => {
                   className="button-white"
                   onClick={() => handleLogoutOut()}
                 >
-                  Logout
+                  <p style={{ display: "block" }}>Logout</p>
+                  {user && (
+                    <p style={{ display: "block", textTransform: "lowercase" }}>
+                      as {user}
+                    </p>
+                  )}
                 </button>
               </li>
             ) : (
