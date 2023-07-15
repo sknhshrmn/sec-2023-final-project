@@ -5,6 +5,7 @@ import MaterialTable from "material-table";
 import { ThemeProvider, createTheme } from "@mui/material";
 import { forwardRef } from "react";
 import axios from "axios";
+import { useAlert } from "react-alert";
 
 // Necessary for material-table
 import AddBox from "@material-ui/icons/AddBox";
@@ -50,6 +51,7 @@ const tableIcons = {
 
 const Users = (req, res) => {
   const defaultMaterialTheme = createTheme();
+  const alert = useAlert();
   const [jwt, setJwt] = useSessionStorage("access_token", "");
   const [data, setData] = useState([]); //table data
 
@@ -123,9 +125,10 @@ const Users = (req, res) => {
     if (newData.email === undefined || validateEmail(newData.email) === false) {
       errorList.push("Please enter a valid email");
     }
-    if (newData.password === undefined) {
-      errorList.push("Please enter password");
-    }
+    // if (newData.password === undefined) {
+    //   errorList.push("Please enter password");
+    // }
+    newData.password = "abcd1234"; /* Set the default password */
     if (newData.fullname === undefined) {
       errorList.push("Please enter fullname");
     }
@@ -191,6 +194,7 @@ const Users = (req, res) => {
           resolve();
           setIserror(false);
           setErrorMessages([]);
+          alert.show("Default password is 'abcd1234'");
         })
         .catch((error) => {
           setErrorMessages(["Update failed! Server error"]);
@@ -250,10 +254,10 @@ const Users = (req, res) => {
                 new Promise((resolve) => {
                   handleRowUpdate(newData, oldData, resolve);
                 }),
-              //   onRowAdd: (newData) =>
-              //     new Promise((resolve) => {
-              //       handleRowAdd(newData, resolve);
-              //     }),
+              onRowAdd: (newData) =>
+                new Promise((resolve) => {
+                  handleRowAdd(newData, resolve);
+                }),
               onRowDelete: (oldData) =>
                 new Promise((resolve) => {
                   handleRowDelete(oldData, resolve);
