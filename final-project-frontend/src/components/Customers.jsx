@@ -251,7 +251,7 @@ const Customers = (req, res) => {
   ];
 
   //JSON data from RESTful API
-  const fetchAllusers = async () => {
+  const fetchAllCustomers = async () => {
     // get jwt from localStorage
     // run get api
     const customer = await axios
@@ -277,7 +277,7 @@ const Customers = (req, res) => {
       });
   };
   useEffect(() => {
-    fetchAllusers();
+    fetchAllCustomers();
   }, [jwt]);
 
   // Validate email
