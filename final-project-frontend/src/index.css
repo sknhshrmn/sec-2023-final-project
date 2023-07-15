@@ -58,6 +58,7 @@
   list-style-type: none;
   height: 100%;
   position: relative;
+  background-color: light gray;
 }
 .container-header ul li {
   list-style: none;
