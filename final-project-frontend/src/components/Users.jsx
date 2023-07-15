@@ -218,10 +218,12 @@ const Users = (req, res) => {
           resolve();
           setIserror(false);
           setErrorMessages([]);
+          alert.show("Default password is 'abcd1234'");
         })
         .catch((error) => {
           setErrorMessages(["Update failed! Server error"]);
           setIserror(true);
+          alert.show("Error!" + error.response?.data?.serverRes.message);
           resolve();
         });
     } else {
