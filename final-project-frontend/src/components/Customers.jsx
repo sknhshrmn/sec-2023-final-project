@@ -187,7 +187,7 @@ const Customers = (req, res) => {
           style={{ padding: "10px" }}
           type="date"
           value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
+          onChange={props.onChange}
         />
       ),
     },
