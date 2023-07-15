@@ -86,7 +86,7 @@ const Header = () => {
                   className="button-white"
                   onClick={() => handleLogoutOut()}
                 >
-                  Logout as {user.username}
+                  Logout
                 </button>
               </li>
             ) : (
