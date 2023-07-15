@@ -72,13 +72,6 @@ const Customers = (req, res) => {
       type: "boolean",
       sorting: false,
       render: (rowdata) => (rowdata.quotation_sent ? <Check /> : <Remove />),
-      editComponent: (props) => (
-        <input
-          type="boolean"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
     },
     {
       field: "created_at",
@@ -103,13 +96,6 @@ const Customers = (req, res) => {
       type: "text",
       lookup: { Hibah: "Hibah", Takaful: "Takaful" },
       sorting: false,
-      editComponent: (props) => (
-        <input
-          type="text"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
     },
     {
       field: "insurance_budget",
@@ -125,13 +111,6 @@ const Customers = (req, res) => {
         RM500: "RM500*",
       },
       sorting: false,
-      editComponent: (props) => (
-        <input
-          type="text"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
     },
     {
       field: "message",
@@ -191,13 +170,6 @@ const Customers = (req, res) => {
       sorting: false,
       render: (rowdata) =>
         rowdata.gender === "Male" ? <GrUser /> : <GrUserFemale />,
-      editComponent: (props) => (
-        <input
-          type="text"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
     },
     {
       field: "birthday",
@@ -219,13 +191,6 @@ const Customers = (req, res) => {
       type: "boolean",
       render: (rowdata) => (rowdata.smoking ? <Check /> : <Remove />),
       sorting: false,
-      editComponent: (props) => (
-        <input
-          type="boolean"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
     },
     {
       field: "critical_illness",
@@ -251,7 +216,7 @@ const Customers = (req, res) => {
   ];
 
   //JSON data from RESTful API
-  const fetchAllCustomers = async () => {
+  const fetchAllusers = async () => {
     // get jwt from localStorage
     // run get api
     const customer = await axios
@@ -277,7 +242,7 @@ const Customers = (req, res) => {
       });
   };
   useEffect(() => {
-    fetchAllCustomers();
+    fetchAllusers();
   }, [jwt]);
 
   // Validate email
