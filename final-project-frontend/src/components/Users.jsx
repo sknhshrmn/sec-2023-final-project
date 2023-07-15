@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, useCallback } from "react";
+import React, { useEffect, useState } from "react";
 import { HOST } from "../api";
 import useSessionStorage from "../hook/useSessionStorage";
 import MaterialTable from "material-table";
@@ -50,17 +50,10 @@ const tableIcons = {
 };
 
 const Users = (req, res) => {
-  // tableRef = useRef();
   const defaultMaterialTheme = createTheme();
   const alert = useAlert();
   const [jwt, setJwt] = useSessionStorage("access_token", "");
   const [data, setData] = useState([]); //table data
-
-  const tableRef = useCallback((node) => {
-    if (node !== null) {
-      setData(node.getBoundingClientRect().data);
-    }
-  }, []);
 
   //for error handling
   const [iserror, setIserror] = useState(false);
@@ -115,6 +108,7 @@ const Users = (req, res) => {
   };
 
   useEffect(() => {
+    fetchAllusers();
     const timer = setInterval(() => {
       setData((prevData) => [
         {
@@ -123,7 +117,6 @@ const Users = (req, res) => {
         },
       ]);
     }, 500);
-    fetchAllusers();
 
     return () => clearInterval(timer);
   }, [jwt]);
@@ -269,7 +262,6 @@ const Users = (req, res) => {
       <div style={{ height: 400, width: "100%" }}>
         <ThemeProvider theme={defaultMaterialTheme}>
           <MaterialTable
-            tableRef={tableRef}
             title="Users"
             columns={columns}
             data={data}
