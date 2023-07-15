@@ -62,7 +62,7 @@ const Users = (req, res) => {
 
   // Define columns
   const columns = [
-    { field: "id", title: "ID", width: 70, editable: "never" },
+    { field: "id", title: "ID", width: 70, editable: "never", hidden: true },
     { field: "username", title: "Username", width: 130 },
     { field: "email", title: "Email", width: 130, sorting: false },
     {
