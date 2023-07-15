@@ -72,6 +72,13 @@ const Customers = (req, res) => {
       type: "boolean",
       sorting: false,
       render: (rowdata) => (rowdata.quotation_sent ? <Check /> : <Remove />),
+      editComponent: (props) => (
+        <input
+          type="boolean"
+          value={props.value}
+          onChange={(e) => props.onChange(e.target.value)}
+        />
+      ),
     },
     {
       field: "created_at",
@@ -96,6 +103,13 @@ const Customers = (req, res) => {
       type: "text",
       lookup: { Hibah: "Hibah", Takaful: "Takaful" },
       sorting: false,
+      editComponent: (props) => (
+        <input
+          type="text"
+          value={props.value}
+          onChange={(e) => props.onChange(e.target.value)}
+        />
+      ),
     },
     {
       field: "insurance_budget",
@@ -111,14 +125,22 @@ const Customers = (req, res) => {
         RM500: "RM500*",
       },
       sorting: false,
+      editComponent: (props) => (
+        <input
+          type="text"
+          value={props.value}
+          onChange={(e) => props.onChange(e.target.value)}
+        />
+      ),
     },
     {
       field: "message",
       title: "Message",
       type: "text",
+      editable: "never",
       cellStyle: {
-        width: 200,
-        maxWidth: 200,
+        width: 500,
+        maxWidth: 500,
         wordWrap: "break-word",
       },
       sorting: false,
@@ -169,6 +191,13 @@ const Customers = (req, res) => {
       sorting: false,
       render: (rowdata) =>
         rowdata.gender === "Male" ? <GrUser /> : <GrUserFemale />,
+      editComponent: (props) => (
+        <input
+          type="text"
+          value={props.value}
+          onChange={(e) => props.onChange(e.target.value)}
+        />
+      ),
     },
     {
       field: "birthday",
@@ -190,6 +219,13 @@ const Customers = (req, res) => {
       type: "boolean",
       render: (rowdata) => (rowdata.smoking ? <Check /> : <Remove />),
       sorting: false,
+      editComponent: (props) => (
+        <input
+          type="boolean"
+          value={props.value}
+          onChange={(e) => props.onChange(e.target.value)}
+        />
+      ),
     },
     {
       field: "critical_illness",
