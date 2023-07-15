@@ -138,12 +138,22 @@ const Users = (req, res) => {
     if (errorList.length < 1) {
       //no error
       const instance = await axios
-        .post(`${HOST}/api/register`, newData, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${jwt}`,
+        .post(
+          `${HOST}/api/register`,
+          {
+            fullname: newData.fullname,
+            username: newData.username,
+            email: newData.email,
+            password: newData.password,
+            is_admin: newData.is_admin,
           },
-        })
+          {
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${jwt}`,
+            },
+          }
+        )
         .then((res) => {
           let dataToAdd = [...data];
           dataToAdd.push(newData);
