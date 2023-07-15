@@ -181,15 +181,15 @@ const Customers = (req, res) => {
       title: "Birthday",
       type: "date",
       sorting: false,
-
-      editComponent: (props) => (
-        <input
-          style={{ padding: "10px" }}
-          type="date"
-          value={props.value}
-          onChange={props.onChange}
-        />
-      ),
+      editable: "onUpdate",
+      // editComponent: (props) => (
+      //   <input
+      //     style={{ padding: "10px" }}
+      //     type="date"
+      //     value={props.value}
+      //     onChange={props.onChange}
+      //   />
+      // ),
     },
     {
       field: "smoking",
