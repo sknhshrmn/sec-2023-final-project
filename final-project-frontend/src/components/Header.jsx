@@ -87,6 +87,7 @@ const Header = () => {
                     display: "flex",
                     justifyContent: "center",
                     alignItems: "center",
+                    flexDirection: "column",
                   }}
                   className="button-white"
                   onClick={() => handleLogoutOut()}
