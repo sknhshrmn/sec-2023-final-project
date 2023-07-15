@@ -105,7 +105,7 @@ const Register = (req, res, next) => {
               }}
             >
               <label htmlFor="username">Username *</label>
-              <input id="username" type="text" required />
+              <input id="username" type="text" autoCapitalize="none" required />
             </div>
             <div
               style={{
