@@ -178,7 +178,7 @@ const Customers = (req, res) => {
     },
     {
       field: "birthday",
-      title: "Birthday",
+      title: "Birth Date",
       type: "date",
       sorting: false,
       editable: "onUpdate",
