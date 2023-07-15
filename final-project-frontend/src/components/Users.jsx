@@ -53,7 +53,8 @@ const Users = (req, res) => {
   const defaultMaterialTheme = createTheme();
   const alert = useAlert();
   const [jwt, setJwt] = useSessionStorage("access_token", "");
-  const [data, setData] = useState([]); //table data
+  //Initialize table data
+  const [data, setData] = useState([]);
 
   //for error handling
   const [iserror, setIserror] = useState(false);
@@ -68,6 +69,12 @@ const Users = (req, res) => {
       field: "fullname",
       title: "Fullname",
       sorting: false,
+      width: 160,
+    },
+    {
+      field: "password",
+      title: "Password",
+      hidden: true,
       width: 160,
     },
     {
@@ -109,16 +116,6 @@ const Users = (req, res) => {
 
   useEffect(() => {
     fetchAllusers();
-    const timer = setInterval(() => {
-      setData((prevData) => [
-        {
-          ...prevData[0],
-          value: Math.round(Math.random() * 1000),
-        },
-      ]);
-    }, 500);
-
-    return () => clearInterval(timer);
   }, [jwt]);
 
   // Validate email
