@@ -50,11 +50,17 @@ const tableIcons = {
 };
 
 const Users = (req, res) => {
-  tableRef = useRef();
+  // tableRef = useRef();
   const defaultMaterialTheme = createTheme();
   const alert = useAlert();
   const [jwt, setJwt] = useSessionStorage("access_token", "");
   const [data, setData] = useState([]); //table data
+
+  const tableRef = useCallback((node) => {
+    if (node !== null) {
+      setData(node.getBoundingClientRect().data);
+    }
+  }, []);
 
   //for error handling
   const [iserror, setIserror] = useState(false);
