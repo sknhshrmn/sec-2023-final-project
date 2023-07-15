@@ -53,6 +53,8 @@ const tableIcons = {
 const Customers = (req, res) => {
   const defaultMaterialTheme = createTheme();
   const [jwt, setJwt] = useSessionStorage("access_token", "");
+  const [user, setUser] = useSessionStorage("userData", null);
+  const [isAdmin, setIsAdmin] = useState(user.is_admin);
   const [data, setData] = useState([]); //table data
 
   //for error handling
@@ -389,34 +391,55 @@ const Customers = (req, res) => {
     >
       <div style={{ height: 400, width: "100%" }}>
         <ThemeProvider theme={defaultMaterialTheme}>
-          <MaterialTable
-            title="Customers"
-            columns={columns}
-            data={data}
-            icons={tableIcons}
-            options={{
-              pageSize: 5,
-              pageSizeOptions: [5, 10, 25, 50, 100],
-              sorting: true,
-            }}
-            editable={{
-              onRowUpdate: (newData, oldData) =>
-                new Promise((resolve) => {
-                  handleRowUpdate(newData, oldData, resolve);
-                }),
-              onRowAdd: (newData) =>
-                new Promise((resolve) => {
-                  handleRowAdd(newData, resolve);
-                }),
-              onRowDelete: (oldData) =>
-                new Promise((resolve) => {
-                  handleRowDelete(oldData, resolve);
-                }),
-            }}
-          />
+          {isAdmin ? (
+            <AdminControl />
+          ) : (
+            <MaterialTable
+              title="Customers"
+              columns={columns}
+              data={data}
+              icons={tableIcons}
+              options={{
+                pageSize: 5,
+                pageSizeOptions: [5, 10, 25, 50, 100],
+                sorting: true,
+              }}
+            />
+          )}
         </ThemeProvider>
       </div>
     </div>
+  );
+};
+
+const AdminControl = () => {
+  return (
+    <MaterialTable
+      title="Customers"
+      columns={columns}
+      data={data}
+      icons={tableIcons}
+      options={{
+        pageSize: 5,
+        pageSizeOptions: [5, 10, 25, 50, 100],
+        sorting: true,
+      }}
+      editable={{
+        onRowUpdate: (newData, oldData) =>
+          new Promise((resolve) => {
+            handleRowUpdate(newData, oldData, resolve);
+          }),
+
+        onRowAdd: (newData) =>
+          new Promise((resolve) => {
+            handleRowAdd(newData, resolve);
+          }),
+        onRowDelete: (oldData) =>
+          new Promise((resolve) => {
+            handleRowDelete(oldData, resolve);
+          }),
+      }}
+    />
   );
 };
 
