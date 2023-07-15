@@ -382,6 +382,39 @@ const Customers = (req, res) => {
         resolve();
       });
   };
+
+  // Table for Admin control
+  const AdminControl = () => {
+    return (
+      <MaterialTable
+        title="Customers"
+        columns={columns}
+        data={data}
+        icons={tableIcons}
+        options={{
+          pageSize: 5,
+          pageSizeOptions: [5, 10, 25, 50, 100],
+          sorting: true,
+        }}
+        editable={{
+          onRowUpdate: (newData, oldData) =>
+            new Promise((resolve) => {
+              handleRowUpdate(newData, oldData, resolve);
+            }),
+
+          onRowAdd: (newData) =>
+            new Promise((resolve) => {
+              handleRowAdd(newData, resolve);
+            }),
+          onRowDelete: (oldData) =>
+            new Promise((resolve) => {
+              handleRowDelete(oldData, resolve);
+            }),
+        }}
+      />
+    );
+  };
+
   return (
     <div
       style={{
@@ -409,37 +442,6 @@ const Customers = (req, res) => {
         </ThemeProvider>
       </div>
     </div>
-  );
-};
-
-const AdminControl = () => {
-  return (
-    <MaterialTable
-      title="Customers"
-      columns={columns}
-      data={data}
-      icons={tableIcons}
-      options={{
-        pageSize: 5,
-        pageSizeOptions: [5, 10, 25, 50, 100],
-        sorting: true,
-      }}
-      editable={{
-        onRowUpdate: (newData, oldData) =>
-          new Promise((resolve) => {
-            handleRowUpdate(newData, oldData, resolve);
-          }),
-
-        onRowAdd: (newData) =>
-          new Promise((resolve) => {
-            handleRowAdd(newData, resolve);
-          }),
-        onRowDelete: (oldData) =>
-          new Promise((resolve) => {
-            handleRowDelete(oldData, resolve);
-          }),
-      }}
-    />
   );
 };
 
