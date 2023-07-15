@@ -106,11 +106,22 @@ const Users = (req, res) => {
         // always executed
       });
   };
+
   useEffect(() => {
+    const timer = setInterval(() => {
+      setData((prevData) => [
+        {
+          ...prevData[0],
+          value: Math.round(Math.random() * 1000),
+        },
+      ]);
+    }, 500);
     fetchAllusers();
+
+    return () => clearInterval(timer);
   }, [jwt]);
 
-  // Validat email
+  // Validate email
   const validateEmail = () => {
     const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
   };
