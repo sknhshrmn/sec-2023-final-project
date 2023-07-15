@@ -50,6 +50,7 @@ const tableIcons = {
 };
 
 const Users = (req, res) => {
+  tableRef = useRef();
   const defaultMaterialTheme = createTheme();
   const alert = useAlert();
   const [jwt, setJwt] = useSessionStorage("access_token", "");
@@ -262,6 +263,7 @@ const Users = (req, res) => {
       <div style={{ height: 400, width: "100%" }}>
         <ThemeProvider theme={defaultMaterialTheme}>
           <MaterialTable
+            tableRef={tableRef}
             title="Users"
             columns={columns}
             data={data}
