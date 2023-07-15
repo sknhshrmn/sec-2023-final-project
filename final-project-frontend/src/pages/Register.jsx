@@ -31,6 +31,7 @@ const Register = (req, res, next) => {
     const username = event.target[1].value;
     const email = event.target[2].value;
     const password = event.target[3].value;
+    const is_admin = false; //Set to false by default
 
     setLoading(true);
 
@@ -41,6 +42,7 @@ const Register = (req, res, next) => {
         username,
         email,
         password,
+        is_admin,
       })
       .then(function (response) {
         // send Object to api
