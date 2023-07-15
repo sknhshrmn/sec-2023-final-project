@@ -500,7 +500,7 @@ input {
   .container-header ul {
     flex-direction: column;
     width: 100vw;
-    background-color: light gray;
+    background: light gray;
     height: min-content;
     gap: 0;
     z-index: 100;
@@ -544,7 +544,7 @@ input {
   .container-header ul {
     flex-direction: column;
     width: 100vw;
-    background-color: light gray;
+    background: light gray;
     height: min-content;
     gap: 0;
     z-index: 100;
