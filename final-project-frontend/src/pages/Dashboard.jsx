@@ -25,6 +25,8 @@ const Dashboard = (req, res) => {
 
   // Handle navigation of login button
   const handleNavigateToLogin = () => {
+    setJwt("");
+    setUser(null);
     navigate("/login");
   };
 
