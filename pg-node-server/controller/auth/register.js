@@ -13,8 +13,7 @@ const register = async (req, res) => {
 
   /* If no validation error, execute database query */
   try {
-    const { username, email, password, fullname } = req.body;
-    const is_admin = false; //Set to false by default
+    const { username, email, password, fullname, is_admin } = req.body;
 
     /* Hashing password */
     const salt = bcrypt.genSaltSync(10);
