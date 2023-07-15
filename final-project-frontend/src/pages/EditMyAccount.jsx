@@ -125,9 +125,9 @@ const EditMyAccount = (req, res) => {
                 {/* Hint */}
                 <div className="hint">
                   <div style={{ fontWeight: "bold" }}>Hint:</div>
-                  <p>Fullname - At least 4 characters</p>
                   <p>Username - At least 4 characters</p>
                   <p>Email - Must be valid email address</p>
+                  <p>Fullname - At least 4 characters</p>
                   {/* <p>Password - At least 8 characters</p> */}
                 </div>
               </form>
