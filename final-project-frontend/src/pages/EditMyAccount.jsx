@@ -128,7 +128,7 @@ const EditMyAccount = (req, res) => {
                   <p>Fullname - At least 4 characters</p>
                   <p>Username - At least 4 characters</p>
                   <p>Email - Must be valid email address</p>
-                  <p>Password - At least 8 characters</p>
+                  {/* <p>Password - At least 8 characters</p> */}
                 </div>
               </form>
             </div>
