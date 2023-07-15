@@ -84,13 +84,13 @@ const Customers = (req, res) => {
     {
       field: "fullname",
       title: "Fullname",
-      editComponent: (props) => (
-        <input
-          type="text"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
+      // editComponent: (props) => (
+      //   <input
+      //     type="text"
+      //     value={props.value}
+      //     onChange={(e) => props.onChange(e.target.value)}
+      //   />
+      // ),
     },
     {
       field: "insurance_type",
@@ -126,42 +126,42 @@ const Customers = (req, res) => {
       },
       sorting: false,
       render: (rowdata) => (rowdata.message ? rowdata.message : <Remove />),
-      editComponent: (props) => (
-        <input
-          style={{ padding: "10px" }}
-          type="text"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
+      // editComponent: (props) => (
+      //   <input
+      //     style={{ padding: "10px" }}
+      //     type="text"
+      //     value={props.value}
+      //     onChange={(e) => props.onChange(e.target.value)}
+      //   />
+      // ),
     },
     {
       field: "email",
       title: "Email",
       type: "text",
       sorting: false,
-      editComponent: (props) => (
-        <input
-          style={{ padding: "10px" }}
-          type="text"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
+      // editComponent: (props) => (
+      //   <input
+      //     style={{ padding: "10px" }}
+      //     type="text"
+      //     value={props.value}
+      //     onChange={(e) => props.onChange(e.target.value)}
+      //   />
+      // ),
     },
     {
       field: "mobile_no",
       title: "Mobile Number",
       type: "text",
       sorting: false,
-      editComponent: (props) => (
-        <input
-          style={{ padding: "10px" }}
-          type="text"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
+      // editComponent: (props) => (
+      //   <input
+      //     style={{ padding: "10px" }}
+      //     type="text"
+      //     value={props.value}
+      //     onChange={(e) => props.onChange(e.target.value)}
+      //   />
+      // ),
     },
 
     {
@@ -178,14 +178,14 @@ const Customers = (req, res) => {
       title: "Birthday",
       type: "date",
       sorting: false,
-      editComponent: (props) => (
-        <input
-          style={{ padding: "10px" }}
-          type="date"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
+      // editComponent: (props) => (
+      //   <input
+      //     style={{ padding: "10px" }}
+      //     type="date"
+      //     value={props.value}
+      //     onChange={(e) => props.onChange(e.target.value)}
+      //   />
+      // ),
     },
     {
       field: "smoking",
@@ -206,19 +206,19 @@ const Customers = (req, res) => {
       sorting: false,
       render: (rowdata) =>
         rowdata.critical_illness ? rowdata.critical_illness : <Remove />,
-      editComponent: (props) => (
-        <input
-          style={{ padding: "10px" }}
-          type="text"
-          value={props.value}
-          onChange={(e) => props.onChange(e.target.value)}
-        />
-      ),
+      // editComponent: (props) => (
+      //   <input
+      //     style={{ padding: "10px" }}
+      //     type="text"
+      //     value={props.value}
+      //     onChange={(e) => props.onChange(e.target.value)}
+      //   />
+      // ),
     },
   ];
 
   //JSON data from RESTful API
-  const fetchAllusers = async () => {
+  const fetchAllCustomers = async () => {
     // get jwt from localStorage
     // run get api
     const customer = await axios
@@ -244,7 +244,7 @@ const Customers = (req, res) => {
       });
   };
   useEffect(() => {
-    fetchAllusers();
+    fetchAllCustomers();
   }, [jwt]);
 
   // Validate email
