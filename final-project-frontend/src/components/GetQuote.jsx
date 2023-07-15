@@ -159,16 +159,19 @@ const GetQuote = () => {
                   </select>
                 </div>
                 {/* Birthday */}
-                <input
-                  id="birthday"
-                  type="date"
-                  placeholder="Birthday *"
-                  value={formValues.birthday}
-                  onChange={(e) =>
-                    setFormValues({ ...formValues, birthday: e.target.value })
-                  }
-                  required
-                />
+                <div className="quotation-form-wrapper-field">
+                  <label htmlFor="birthday">Birth Date *</label>
+                  <input
+                    id="birthday"
+                    type="date"
+                    placeholder="Birthday *"
+                    value={formValues.birthday}
+                    onChange={(e) =>
+                      setFormValues({ ...formValues, birthday: e.target.value })
+                    }
+                    required
+                  />
+                </div>
                 {/* Smoking */}
                 <div className="quotation-form-wrapper-field">
                   <label htmlFor="str_smoking">Smoking? *</label>
