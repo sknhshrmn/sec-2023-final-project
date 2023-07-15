@@ -98,6 +98,7 @@ const Customers = (req, res) => {
       type: "text",
       lookup: { Hibah: "Hibah", Takaful: "Takaful" },
       sorting: false,
+      initialEditValue: "Hibah",
     },
     {
       field: "insurance_budget",
@@ -113,6 +114,7 @@ const Customers = (req, res) => {
         RM500: "RM500*",
       },
       sorting: false,
+      initialEditValue: "RM150",
     },
     {
       field: "message",
@@ -170,6 +172,7 @@ const Customers = (req, res) => {
       enableSorting: false,
       lookup: { Male: <GrUser />, Female: <GrUserFemale /> },
       sorting: false,
+      initialEditValue: "Male",
       render: (rowdata) =>
         rowdata.gender === "Male" ? <GrUser /> : <GrUserFemale />,
     },
@@ -193,6 +196,7 @@ const Customers = (req, res) => {
       type: "boolean",
       render: (rowdata) => (rowdata.smoking ? <Check /> : <Remove />),
       sorting: false,
+      initialEditValue: false,
     },
     {
       field: "critical_illness",
