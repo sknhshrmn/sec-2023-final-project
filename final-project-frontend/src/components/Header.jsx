@@ -83,12 +83,17 @@ const Header = () => {
             {jwt ? (
               <li>
                 <button
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                  }}
                   className="button-white"
                   onClick={() => handleLogoutOut()}
                 >
-                  <p style={{ display: "block" }}>Logout</p>
+                  <p>Logout</p>
                   {user && (
-                    <p style={{ display: "block", textTransform: "lowercase" }}>
+                    <p style={{ textTransform: "lowercase" }}>
                       as {user.username}
                     </p>
                   )}
