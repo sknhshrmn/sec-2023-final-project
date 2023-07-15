@@ -138,7 +138,7 @@ const Users = (req, res) => {
     if (errorList.length < 1) {
       //no error
       const instance = await axios
-        .post(`${HOST}/api/users/create`, newData, {
+        .post(`${HOST}/api/register`, newData, {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${jwt}`,
