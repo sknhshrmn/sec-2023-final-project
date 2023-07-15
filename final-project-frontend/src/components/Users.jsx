@@ -161,11 +161,13 @@ const Users = (req, res) => {
           resolve();
           setErrorMessages([]);
           setIserror(false);
+          alert.show("Default password is 'abcd1234'");
         })
         .catch((error) => {
           setErrorMessages(["Cannot add data. Server error!"]);
           setIserror(true);
           resolve();
+          alert.show(error);
         });
     } else {
       setErrorMessages(errorList);
@@ -204,7 +206,6 @@ const Users = (req, res) => {
           resolve();
           setIserror(false);
           setErrorMessages([]);
-          alert.show("Default password is 'abcd1234'");
         })
         .catch((error) => {
           setErrorMessages(["Update failed! Server error"]);
